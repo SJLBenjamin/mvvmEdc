@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/report_navigation"
+    app:startDestination="@id/dayFragment">
+
+    <fragment
+        android:id="@+id/dayFragment"
+        android:name="com.endoc.mvvmedc.ui.fragment.report.DayFragment"
+        android:label="fragment_day"
+        tools:layout="@layout/fragment_day" />
+    <fragment
+        android:id="@+id/eventFragment"
+        android:name="com.endoc.mvvmedc.ui.fragment.report.EventFragment"
+        android:label="fragment_event"
+        tools:layout="@layout/fragment_event" />
+    <fragment
+        android:id="@+id/repeatFragment"
+        android:name="com.endoc.mvvmedc.ui.fragment.report.RepeatFragment"
+        android:label="fragment_repeat"
+        tools:layout="@layout/fragment_repeat" />
+    <fragment
+        android:id="@+id/completeFragment"
+        android:name="com.endoc.mvvmedc.ui.fragment.report.CompleteFragment"
+        android:label="fragment_complete"
+        tools:layout="@layout/fragment_complete" />
+    <fragment
+        android:id="@+id/paintFragment"
+        android:name="com.endoc.mvvmedc.ui.fragment.report.PaintFragment"
+        android:label="fragment_paint"
+        tools:layout="@layout/fragment_paint" />
+
+</navigation>

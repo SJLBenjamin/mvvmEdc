@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 自定义的属性-->
+    <declare-styleable name="Header">
+        <attr name="titleTextSize" format="dimension" />
+        <attr name="splitShow" format="boolean"/>
+        <attr name="titleTextColor" format="color" />
+        <attr name="titleText" format="string"/>
+        <attr name="leftImageSrc" format="reference|integer"/>
+        <attr name="rightImageSrc" format="reference|integer"/>
+
+        <attr name="centerTitleContent" format="string"/>
+        <attr name="leftTopContentText" format="string"/>
+        <attr name="leftTopContentData" format="string"/>
+        <attr name="rightTopContentText" format="string"/>
+        <attr name="rightTopContentData" format="string"/>
+        <attr name="leftDownContentText" format="string"/>
+        <attr name="leftDownContentData" format="string"/>
+        <attr name="rightDownContentText" format="string"/>
+        <attr name="rightDownContentData" format="string"/>
+        />
+    </declare-styleable>
+
+    <!--状态栏的高度-->
+    <declare-styleable name="StatusBarHeightView">
+        <attr name="use_type" format="integer">
+            <enum name="use_height" value="0" />
+            <enum name="use_padding_top" value="1" />
+        </attr>
+    </declare-styleable>
+
+
+    <!-- 自定义的属性-->
+    <declare-styleable name="TitleHeader">
+        <attr name="headTitleName" format="string"/>
+        <attr name="rightDes" format="string"/>
+        <attr name="leftShow" format="boolean"/>
+        <attr name="rightShow" format="boolean"/>
+        />
+    </declare-styleable>
+
+
+</resources>

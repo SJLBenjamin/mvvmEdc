@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="white">#FFFFFF</color>
+    <color name="gray">#808080</color>
+    <color name="light_gray">#D3D3D3</color>
+    <color name="transparent">#00000000</color>
+
+
+    <color name="colorRecodeText">#FF666666</color>
+    <color name="colorBottonOnclickText">#FF3F51B5</color>
+    <color name="colorBackgound">#E0E0E0</color>
+    <color name="colorReportTextBackground">#BBBBBB</color>
+    <color name="colorDate">#FF3479DC</color>
+    <color name="colorHight">#FFFF6363</color>
+    <color name="colorLow">#FF1460F9</color>
+    <color name="colorNormal">#009688</color>
+    <color name="colorDeviceItem">#E0E0E0</color>
+    <color name="colorDeviceItemText">#101010</color>
+    <color name="colorDeviceBind">#108EE9</color>
+    <color name="black">#101010</color>
+    <color name="myGray">#BBBBBB</color>
+    <color name="red">#E51C23</color>
+    <color name="colorXuXian">#FF3F51B5</color>
+    <color name="addReferenceBlood">#ffffffff</color>
+    <color name="ReferenceBloodTitle">#EEEAEA</color>
+    <color name="colorSelectTypeOfUseMedical">#FFDFE8FF</color>
+    <color name="colorNoSelectTypeOfUseMedical">#FFFFFFFF</color>
+    <color name="myWhite">#FFFFFF</color>
+    <color name="weekDayNotSelect">#888585</color>
+    <color name="colorBloodSugarText">#323232</color>
+    <color name="colorMonitorRectangleBackground">#778D9A</color><!--监测页面圆圈背景颜色-->
+    <color name="colorDetailMonitorRectangleBackground">#fff6f6f6</color><!--监测血糖详细页面选择颜色-->
+    <color name="colorDetailMonitorTextBackground">#888888</color><!--监测血糖详细页面默认文字颜色-->
+    <color name="colorMainActivityBackground">#4076F8</color><!--主界面背景颜色-->
+    <color name="colorReportYellowTextView">#FFFFF4E0</color><!--报告界面的黄色背景的黄色文字-->
+    <color name="colorReportWhiteTextView">#FFFFFFFF</color><!--报告界面的黄色背景的白色文字-->
+</resources>
