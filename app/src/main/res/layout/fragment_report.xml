@@ -5,19 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.fragment.ReportFragment">
-
+    <!-- android:fitsSystemWindows="true"
+    这个属性会自动添加paddingTop值 留出titlebar位置
+    有的机型 下部有虚拟操作键 可能下部也会留出位置
+    -->
     <com.google.android.material.tabs.TabLayout
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
-        android:layout_height="44dp"
-        android:fitsSystemWindows="true"
+        android:layout_height="wrap_content"
         app:tabBackground="@color/white"
-        app:tabIndicatorColor="@color/gray"
-        app:tabIndicatorHeight="4dp"
-        app:tabSelectedTextColor="@color/gray"
-        app:tabTextColor="@color/light_gray">
+        app:tabIndicatorColor="@color/colorLow"
+        app:tabIndicatorHeight="2dp"
+        app:tabSelectedTextColor="@color/colorLow"
+        app:tabTextColor="@color/colorRecodeText">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
@@ -51,8 +53,6 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:defaultNavHost="true"
-
         app:navGraph="@navigation/report_navigation"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp" />
+         />
 </androidx.constraintlayout.widget.ConstraintLayout>

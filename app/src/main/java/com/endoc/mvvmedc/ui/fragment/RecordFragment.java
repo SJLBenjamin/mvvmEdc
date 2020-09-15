@@ -4,11 +4,14 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.endoc.mvvmedc.R;
+import com.endoc.mvvmedc.base.BaseFragment;
+import com.orhanobut.logger.Logger;
 
 
 /**
@@ -16,7 +19,7 @@ import com.endoc.mvvmedc.R;
  * Use the {@link RecordFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class RecordFragment extends Fragment {
+public class RecordFragment extends BaseFragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -61,6 +64,11 @@ public class RecordFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_record, container, false);
+        View inflate = inflater.inflate(R.layout.fragment_record, container, false);
+        initTitleView(View.VISIBLE,View.VISIBLE,View.VISIBLE,View.VISIBLE,getString(R.string.recode));
+        Logger.d(mainActivityViewModel);
+        return inflate;
     }
+
+
 }

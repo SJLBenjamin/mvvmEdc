@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.endoc.mvvmedc.R;
+import com.endoc.mvvmedc.base.BaseFragment;
+import com.endoc.mvvmedc.share.MainActivityViewModel;
 
 
 /**
@@ -16,7 +18,7 @@ import com.endoc.mvvmedc.R;
  * Use the {@link DayFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class DayFragment extends Fragment {
+public class DayFragment extends BaseFragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -63,4 +65,6 @@ public class DayFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_day, container, false);
     }
+
+
 }
