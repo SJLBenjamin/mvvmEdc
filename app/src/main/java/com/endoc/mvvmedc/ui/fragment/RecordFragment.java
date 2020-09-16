@@ -65,8 +65,8 @@ public class RecordFragment extends BaseFragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View inflate = inflater.inflate(R.layout.fragment_record, container, false);
-        initTitleView(View.VISIBLE,View.VISIBLE,View.VISIBLE,View.VISIBLE,getString(R.string.recode));
-        Logger.d(mainActivityViewModel);
+        initTitleView(View.INVISIBLE,View.VISIBLE,View.VISIBLE,View.INVISIBLE,getString(R.string.recode));
+        Logger.d(shareViewModel);
         return inflate;
     }
 

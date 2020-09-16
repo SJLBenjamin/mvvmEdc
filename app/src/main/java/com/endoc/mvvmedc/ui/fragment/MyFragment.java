@@ -63,6 +63,7 @@ public class MyFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        initTitleView(View.INVISIBLE,View.VISIBLE,View.VISIBLE,View.INVISIBLE,getString(R.string.my));
         return inflater.inflate(R.layout.fragment_my, container, false);
     }
 

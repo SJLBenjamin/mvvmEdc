@@ -14,10 +14,22 @@ import com.orhanobut.logger.Logger;
 
 public class App  extends Application implements ViewModelStoreOwner {
     ViewModelProvider.Factory mFactory;
+
+    //必须保证这个是同一个对象,否则就
+    private ViewModelStore mAppViewModelStore;
     @NonNull
     @Override
     public ViewModelStore getViewModelStore() {
-        return new ViewModelStore();
+        //此方法提供的返回值必须要是同一个对象,否则就会导致创建的viewModel不一致,此对象用来存储ViewModel对象,如果每次创建了新的ViewModelStore,那么viewModel每次都为null,所以都会创建
+        return mAppViewModelStore;
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        //初始化log打印
+        Logger.addLogAdapter(new AndroidLogAdapter());
+        mAppViewModelStore = new ViewModelStore();
     }
 
     /**
@@ -46,10 +58,7 @@ public class App  extends Application implements ViewModelStoreOwner {
         return application;
     }
 
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        //初始化log打印
-        Logger.addLogAdapter(new AndroidLogAdapter());
-    }
+
+
+
 }

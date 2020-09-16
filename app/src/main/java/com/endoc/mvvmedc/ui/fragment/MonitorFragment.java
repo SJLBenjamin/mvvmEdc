@@ -2,7 +2,10 @@ package com.endoc.mvvmedc.ui.fragment;
 
 import android.os.Bundle;
 
+import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +13,8 @@ import android.view.ViewGroup;
 
 import com.endoc.mvvmedc.R;
 import com.endoc.mvvmedc.base.BaseFragment;
+import com.endoc.mvvmedc.bridge.state.FragmentMonitorViewModel;
+import com.endoc.mvvmedc.databinding.FragmentMonitorBinding;
 import com.endoc.mvvmedc.share.MainActivityViewModel;
 
 
@@ -27,6 +32,7 @@ public class MonitorFragment extends BaseFragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private FragmentMonitorBinding mFragmentMonitorBinding;
 
     public MonitorFragment() {
         // Required empty public constructor
@@ -62,10 +68,40 @@ public class MonitorFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        initTitleView(View.GONE,View.GONE,View.GONE,View.GONE,"");
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_monitor, container, false);
+        View inflate = inflater.inflate(R.layout.fragment_monitor, container, false);
+        mFragmentMonitorBinding = DataBindingUtil.bind(inflate);
+       getAppViewModelProvider().get(FragmentMonitorViewModel.class);
+        return inflate;
+
     }
 
 
+    /**
+     * 点击事件
+     */
+    public  class Click{
+        //点击了闹钟
+        public void alarm(){
+
+        }
+        //点击了消息
+        public void message(){
+
+        }
+        //点击了设备控制
+        public void connectDevice(){
+
+        }
+
+        //点击了搜索
+        public void search(){
+
+        }
+
+
+    }
 
 }

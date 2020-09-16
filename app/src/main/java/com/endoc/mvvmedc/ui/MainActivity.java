@@ -29,10 +29,9 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        initTitleView(View.GONE,View.GONE,View.GONE,View.GONE,"");
-        mActivityMainBinding.setVm(mainActivityViewModel);//设置绑定
+        mActivityMainBinding.setVm(shareViewModel);//设置绑定
         initNavigationView();
-        Logger.d(mainActivityViewModel);
+        Logger.d(shareViewModel);
     }
 
 

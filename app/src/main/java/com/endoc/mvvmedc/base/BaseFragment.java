@@ -13,12 +13,13 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.endoc.mvvmedc.App;
 import com.endoc.mvvmedc.share.MainActivityViewModel;
+import com.endoc.mvvmedc.share.ShareViewModel;
 import com.orhanobut.logger.Logger;
 
 public abstract class BaseFragment extends Fragment {
 
     AppCompatActivity mActivity;
-    public MainActivityViewModel mainActivityViewModel;//全局共享的viewModel
+    public ShareViewModel shareViewModel;//全局共享的viewModel
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -31,10 +32,13 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mainActivityViewModel = getAppViewModelProvider().get(MainActivityViewModel.class);
-        Logger.d("BaseFragment==="+mainActivityViewModel);
-        Logger.d("BaseActivity getAppViewModelProvider=="+getAppViewModelProvider());//不一样
+        shareViewModel = getAppViewModelProvider().get(ShareViewModel.class);
+        Logger.d("BaseFragment==="+shareViewModel);
+        //Logger.d("BaseFragment getAppViewModelProvider=="+getAppViewModelProvider());//不一样
     }
+
+
+
 
     //让BaseFragment拿到绑定了Application的ViewModelProvider对象
     public ViewModelProvider getAppViewModelProvider(){
@@ -65,10 +69,10 @@ public abstract class BaseFragment extends Fragment {
      *     public ObservableField<String>  titleShow = new ObservableField<String>();//显示的内容
      */
     public  void initTitleView(int back,int constraintLayoutStatus,int isImgMessage,int save,String titleShow){
-        mainActivityViewModel.isBack.set(back);
-        mainActivityViewModel.isConstraintLayoutStatus.set(constraintLayoutStatus);
-        mainActivityViewModel.isImgMessage.set(isImgMessage);
-        mainActivityViewModel.isSave.set(save);
-        mainActivityViewModel.titleShow.set(titleShow);
+        shareViewModel.isBack.set(back);
+        shareViewModel.isConstraintLayoutStatus.set(constraintLayoutStatus);
+        shareViewModel.isImgMessage.set(isImgMessage);
+        shareViewModel.isSave.set(save);
+        shareViewModel.titleShow.set(titleShow);
     }
 }

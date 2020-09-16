@@ -66,5 +66,4 @@ public class PaintFragment extends BaseFragment {
         return inflater.inflate(R.layout.fragment_paint, container, false);
     }
 
-
 }

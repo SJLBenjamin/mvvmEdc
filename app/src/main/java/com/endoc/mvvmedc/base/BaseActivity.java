@@ -11,14 +11,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.endoc.mvvmedc.App;
-import com.endoc.mvvmedc.share.MainActivityViewModel;
+import com.endoc.mvvmedc.share.ShareViewModel;
 import com.endoc.mvvmedc.utils.BarUtils;
 import com.orhanobut.logger.Logger;
 
 
 public  class BaseActivity extends AppCompatActivity {
 
-   public MainActivityViewModel mainActivityViewModel;//全局通讯的
+   public ShareViewModel shareViewModel;//全局通讯的
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -27,9 +27,17 @@ public  class BaseActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         BarUtils.setStatusBarColor(this, Color.TRANSPARENT);
         BarUtils.setStatusBarLightMode(this, true);
-        mainActivityViewModel = getAppViewModelProvider().get(MainActivityViewModel.class);
-        Logger.d("BaseActivity==="+mainActivityViewModel);
-        Logger.d("BaseActivity getAppViewModelProvider==="+getAppViewModelProvider());//不一样
+        shareViewModel = getAppViewModelProvider().get(ShareViewModel.class);
+        //shareViewModel = getAppViewModelProviderTo().get(shareViewModel.class);
+
+        Logger.d("BaseActivity==="+shareViewModel);
+        //Logger.d("BaseActivity getAppViewModelProvider==="+getAppViewModelProvider());//不一样
+    }
+
+    // 自己封装的 ViewModelProvider
+    protected ViewModelProvider getAppViewModelProviderTo() {
+        //Logger.d("BaseActivity getApplication==="+(App) getApplicationContext());
+        return new ViewModelProvider((App) getApplicationContext());
     }
 
     // 2020 用法 ViewModelProvider
@@ -61,11 +69,11 @@ public  class BaseActivity extends AppCompatActivity {
      *     public ObservableField<String>  titleShow = new ObservableField<String>();//显示的内容
      */
    public  void initTitleView(int back,int constraintLayoutStatus,int message,int save,String titleShow){
-       mainActivityViewModel.isBack.set(back);
-       mainActivityViewModel.isConstraintLayoutStatus.set(constraintLayoutStatus);
-       mainActivityViewModel.isImgMessage.set(message);
-       mainActivityViewModel.isSave.set(save);
-       mainActivityViewModel.titleShow.set(titleShow);
+       shareViewModel.isBack.set(back);
+       shareViewModel.isConstraintLayoutStatus.set(constraintLayoutStatus);
+       shareViewModel.isImgMessage.set(message);
+       shareViewModel.isSave.set(save);
+       shareViewModel.titleShow.set(titleShow);
    }
 
 
