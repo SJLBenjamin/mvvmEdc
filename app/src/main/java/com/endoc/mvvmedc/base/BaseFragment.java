@@ -2,9 +2,11 @@ package com.endoc.mvvmedc.base;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -22,15 +24,22 @@ public abstract class BaseFragment extends Fragment {
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         mActivity = (AppCompatActivity) context;
-        mainActivityViewModel = getAppViewModelProvider().get(MainActivityViewModel.class);
-        Logger.d("BaseFragment==="+mainActivityViewModel);
+        //Logger.d("BaseFragment getAppViewModelProvider()==="+getAppViewModelProvider());
+
     }
 
-
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mainActivityViewModel = getAppViewModelProvider().get(MainActivityViewModel.class);
+        Logger.d("BaseFragment==="+mainActivityViewModel);
+        Logger.d("BaseActivity getAppViewModelProvider=="+getAppViewModelProvider());//不一样
+    }
 
     //让BaseFragment拿到绑定了Application的ViewModelProvider对象
     public ViewModelProvider getAppViewModelProvider(){
-        return ((App) mActivity.getApplication()).getAppViewModelProvider(mActivity);
+       // Logger.d("BaseFragment getApplication==="+((App) mActivity.getApplication()));
+        return ((App) mActivity.getApplicationContext()).getAppViewModelProvider(mActivity);
     }
 
 

@@ -33,7 +33,6 @@ public class MainActivity extends BaseActivity {
         mActivityMainBinding.setVm(mainActivityViewModel);//设置绑定
         initNavigationView();
         Logger.d(mainActivityViewModel);
-
     }
 
 

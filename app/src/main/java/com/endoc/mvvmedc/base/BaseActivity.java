@@ -29,11 +29,12 @@ public  class BaseActivity extends AppCompatActivity {
         BarUtils.setStatusBarLightMode(this, true);
         mainActivityViewModel = getAppViewModelProvider().get(MainActivityViewModel.class);
         Logger.d("BaseActivity==="+mainActivityViewModel);
-        //initTitleView(mainActivityViewModel);
+        Logger.d("BaseActivity getAppViewModelProvider==="+getAppViewModelProvider());//不一样
     }
 
     // 2020 用法 ViewModelProvider
     protected ViewModelProvider getAppViewModelProvider() {
+        //Logger.d("BaseActivity getApplication==="+(App) getApplicationContext());
         return ((App) getApplicationContext()).getAppViewModelProvider(this);
     }
 
@@ -66,4 +67,7 @@ public  class BaseActivity extends AppCompatActivity {
        mainActivityViewModel.isSave.set(save);
        mainActivityViewModel.titleShow.set(titleShow);
    }
+
+
+
 }
