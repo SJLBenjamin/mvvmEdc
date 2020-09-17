@@ -14,4 +14,5 @@ public class ShareViewModel extends ViewModel {
     public ObservableInt isSave = new ObservableInt();//保存按钮
     public ObservableInt isImgMessage = new ObservableInt();//消息图片
     public ObservableField<String> titleShow = new ObservableField<String>();//显示的内容
+
 }

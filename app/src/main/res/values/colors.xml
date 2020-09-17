@@ -8,7 +8,9 @@
     <color name="light_gray">#D3D3D3</color>
     <color name="transparent">#00000000</color>
 
-
+    <color name="colorRecode">#BBBBBB</color>
+    <color name="colorGray">#ff888888</color>
+    <color name="colorBlack">#ff323232</color>
     <color name="colorRecodeText">#FF666666</color>
     <color name="colorBottonOnclickText">#FF3F51B5</color>
     <color name="colorBackgound">#E0E0E0</color>

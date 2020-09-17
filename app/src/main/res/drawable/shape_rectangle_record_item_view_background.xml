@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 记录页面自定义组合控件的背景-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <!-- 内部颜色 -->
+    <solid android:color="#ffffffff" />
+    <!-- 边缘线条颜色 -->
+    <stroke
+        android:width="0.5dp"
+        android:color="#ff778d9a" />
+    <!-- 圆角的幅度 -->
+    <corners
+        android:bottomLeftRadius="8dp"
+        android:bottomRightRadius="8dp"
+        android:topLeftRadius="8dp"
+        android:topRightRadius="8dp" />
+</shape>
+

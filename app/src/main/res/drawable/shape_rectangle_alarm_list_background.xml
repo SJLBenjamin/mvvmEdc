@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 记录页面设备报警记录回顾回顾背景-->
+<shape
+xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle"
+    >
+<!-- 内部颜色 -->
+<!--<solid-->
+<!--    android:color="#fffff9ef" />-->
+<!-- 边缘线条颜色 -->
+    <stroke android:width="0.1dp" android:color="#CECECE" />
+<!-- 圆角的幅度 -->
+<corners
+    android:topLeftRadius="7dp"
+    android:topRightRadius="7dp"
+    android:bottomLeftRadius="7dp"
+    android:bottomRightRadius="7dp" />
+
+</shape>

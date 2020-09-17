@@ -1,10 +1,15 @@
 package com.endoc.mvvmedc.bridge.state;
 
+import androidx.databinding.ObservableArrayList;
 import androidx.databinding.ObservableBoolean;
 import androidx.databinding.ObservableDouble;
 import androidx.databinding.ObservableField;
 import androidx.databinding.ObservableInt;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+
+import cn.com.heaton.blelibrary.ble.model.BleDevice;
 
 public class FragmentMonitorViewModel extends ViewModel {
     //设备连接名称
@@ -23,5 +28,12 @@ public class FragmentMonitorViewModel extends ViewModel {
     //箭头是否显示
     public ObservableInt jianTouShow = new ObservableInt();
 
+    //是否搜索
+    public MutableLiveData<Boolean> search =new MutableLiveData();
+
+    //蓝牙列表
+    public ObservableArrayList<BleDevice> bleDevices = new ObservableArrayList<>();
+
+    //public MutableLiveData<Boolean> search = new MutableLiveData<>();
 
 }

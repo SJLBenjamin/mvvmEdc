@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--报告页面有效检测时长背景-->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#ffecf3ff" />
+            <stroke android:width="1dp" android:color="#FF92BAFF" />
+            <corners
+                android:bottomLeftRadius="5dp"
+                android:bottomRightRadius="5dp"
+                android:topLeftRadius="5dp"
+                android:topRightRadius="5dp" />
+        </shape>
+    </item>
+
+</layer-list>

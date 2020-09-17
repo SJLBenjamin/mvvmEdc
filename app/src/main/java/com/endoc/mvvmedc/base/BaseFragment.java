@@ -9,7 +9,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentController;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.endoc.mvvmedc.App;
 import com.endoc.mvvmedc.share.MainActivityViewModel;
@@ -18,7 +21,7 @@ import com.orhanobut.logger.Logger;
 
 public abstract class BaseFragment extends Fragment {
 
-    AppCompatActivity mActivity;
+   public AppCompatActivity mActivity;
     public ShareViewModel shareViewModel;//全局共享的viewModel
 
     @Override
@@ -74,5 +77,10 @@ public abstract class BaseFragment extends Fragment {
         shareViewModel.isImgMessage.set(isImgMessage);
         shareViewModel.isSave.set(save);
         shareViewModel.titleShow.set(titleShow);
+    }
+
+
+    public NavController getNavController(){
+        return NavHostFragment.findNavController(this);
     }
 }
