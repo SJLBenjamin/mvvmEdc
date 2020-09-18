@@ -19,6 +19,8 @@ import com.endoc.mvvmedc.share.MainActivityViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.orhanobut.logger.Logger;
 
+import java.util.List;
+
 public class MainActivity extends BaseActivity {
 
     private BottomNavigationView mBottomNavigationView;
@@ -31,7 +33,7 @@ public class MainActivity extends BaseActivity {
         mActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         mActivityMainBinding.setVm(shareViewModel);//设置绑定
         initNavigationView();
-        Logger.d(shareViewModel);
+//        Logger.d(shareViewModel);
     }
 
 
@@ -58,16 +60,7 @@ public class MainActivity extends BaseActivity {
 
     }
 
-   /* //修改底部栏图标大小
-    private void adjustNavigationIcoSize(BottomNavigationView navigation,float height,float width){
-        BottomNavigationMenuView menuView = (BottomNavigationMenuView) navigation.getChildAt(0);
-        for (int i = 0; i < menuView.getChildCount(); i++) {
-            final View iconView = menuView.getChildAt(i).findViewById(android.support.design.R.id.icon);
-            final ViewGroup.LayoutParams layoutParams = iconView.getLayoutParams();
-            final DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
-            layoutParams.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, height, displayMetrics);
-            layoutParams.width = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, width, displayMetrics);
-            iconView.setLayoutParams(layoutParams);
-        }
-    }*/
+
+
+
 }

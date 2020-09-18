@@ -36,4 +36,8 @@ public class FragmentMonitorViewModel extends ViewModel {
 
     //public MutableLiveData<Boolean> search = new MutableLiveData<>();
 
+    public FragmentMonitorViewModel(){
+        search.setValue(true);//默认未搜索
+    }
+
 }

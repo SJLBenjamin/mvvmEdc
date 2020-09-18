@@ -44,6 +44,7 @@ public class DeviceListAdapter extends RecyclerView.Adapter<DeviceListAdapter.De
         TextView deviceName;
         public DeviceHolder(@NonNull View itemView) {
             super(itemView);
+            deviceName =(TextView) itemView.findViewById(R.id.tv_device_name);
         }
     }
 

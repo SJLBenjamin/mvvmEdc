@@ -26,7 +26,7 @@ public class MonitorBleBindingAdapter {
             //怎么获取ViewModel中的成员,此ViewModel是Fragment已经实例化的对象
             FragmentMonitorViewModel fragmentMonitorViewModel = ((App) textView.getContext().getApplicationContext()).getAppViewModelProvider((MainActivity) textView.getContext()).get(FragmentMonitorViewModel.class);
 
-            BleOperation.startSearch();
+
         }
     }
 

@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
@@ -15,8 +16,12 @@ import com.endoc.mvvmedc.share.ShareViewModel;
 import com.endoc.mvvmedc.utils.BarUtils;
 import com.orhanobut.logger.Logger;
 
+import java.util.List;
 
-public  class BaseActivity extends AppCompatActivity {
+import pub.devrel.easypermissions.EasyPermissions;
+
+
+public  class BaseActivity extends AppCompatActivity implements EasyPermissions.PermissionCallbacks {
 
    public ShareViewModel shareViewModel;//全局通讯的
 
@@ -30,7 +35,7 @@ public  class BaseActivity extends AppCompatActivity {
         shareViewModel = getAppViewModelProvider().get(ShareViewModel.class);
         //shareViewModel = getAppViewModelProviderTo().get(shareViewModel.class);
 
-        Logger.d("BaseActivity==="+shareViewModel);
+        //Logger.d("BaseActivity==="+shareViewModel);
         //Logger.d("BaseActivity getAppViewModelProvider==="+getAppViewModelProvider());//不一样
     }
 
@@ -76,6 +81,14 @@ public  class BaseActivity extends AppCompatActivity {
        shareViewModel.titleShow.set(titleShow);
    }
 
+    //如果checkPerm方法，没有注解AfterPermissionGranted，也可以在这里调用该方法。
+    @Override
+    public void onPermissionsGranted(int requestCode, @NonNull List<String> perms) {
 
+    }
 
+    @Override
+    public void onPermissionsDenied(int requestCode, @NonNull List<String> perms) {
+
+    }
 }

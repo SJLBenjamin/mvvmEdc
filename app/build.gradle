@@ -61,4 +61,10 @@ dependencies {
 
     implementation 'cn.com.superLei:blelibrary:3.0.2'  //2020/3/16因为逍遥游的库不能后台扫描,所以更换为群主的库
 
+
+    // For developers using AndroidX in their applications
+    implementation 'pub.devrel:easypermissions:3.0.0'
+
+    // For developers using the Android Support Library
+    implementation 'pub.devrel:easypermissions:2.0.1'
 }

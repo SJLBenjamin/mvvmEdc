@@ -19,7 +19,11 @@ import com.endoc.mvvmedc.share.MainActivityViewModel;
 import com.endoc.mvvmedc.share.ShareViewModel;
 import com.orhanobut.logger.Logger;
 
-public abstract class BaseFragment extends Fragment {
+import java.util.List;
+
+import pub.devrel.easypermissions.EasyPermissions;
+
+public  class BaseFragment extends Fragment  implements EasyPermissions.PermissionCallbacks {
 
    public AppCompatActivity mActivity;
     public ShareViewModel shareViewModel;//全局共享的viewModel
@@ -36,7 +40,7 @@ public abstract class BaseFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         shareViewModel = getAppViewModelProvider().get(ShareViewModel.class);
-        Logger.d("BaseFragment==="+shareViewModel);
+        //Logger.d("BaseFragment==="+shareViewModel);
         //Logger.d("BaseFragment getAppViewModelProvider=="+getAppViewModelProvider());//不一样
     }
 
@@ -82,5 +86,15 @@ public abstract class BaseFragment extends Fragment {
 
     public NavController getNavController(){
         return NavHostFragment.findNavController(this);
+    }
+
+    @Override
+    public void onPermissionsGranted(int requestCode, @NonNull List<String> perms) {
+
+    }
+
+    @Override
+    public void onPermissionsDenied(int requestCode, @NonNull List<String> perms) {
+
     }
 }
