@@ -1,17 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:background="@color/colorDeviceItem"
-    android:layout_height="55dp">
-    <TextView
-        android:background="@color/white"
-        android:gravity="center_vertical"
-        android:paddingRight="8dp"
-        android:paddingLeft="8dp"
-        android:textSize="17dp"
-        android:textColor="@color/colorDeviceItemText"
-        android:id="@+id/tv_device_name"
-        android:layout_width="match_parent"
-        android:layout_height="54dp" />
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-</LinearLayout>
+    <data>
+        <variable
+            name="vm"
+            type="cn.com.heaton.blelibrary.ble.model.BleDevice" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:background="@color/colorDeviceItem"
+        android:layout_height="55dp">
+
+        <TextView
+            android:text="@{vm.bleName}"
+            android:background="@color/white"
+            android:gravity="center_vertical"
+            android:paddingRight="8dp"
+            android:paddingLeft="8dp"
+            android:textSize="17dp"
+            android:textColor="@color/colorDeviceItemText"
+            android:id="@+id/tv_device_name"
+            android:layout_width="match_parent"
+            android:layout_height="54dp" />
+
+    </LinearLayout>
+</layout>

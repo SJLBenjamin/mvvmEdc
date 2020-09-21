@@ -16,6 +16,8 @@ public class FragmentMonitorViewModel extends ViewModel {
     public   ObservableField<String>  connectDeviceName = new ObservableField<String>();
     //设备是否连接
     public  ObservableBoolean connectState = new ObservableBoolean();
+
+    //设备连接
     //用户名
     public ObservableField<String> userName = new ObservableField<String>();
 
@@ -29,10 +31,15 @@ public class FragmentMonitorViewModel extends ViewModel {
     public ObservableInt jianTouShow = new ObservableInt();
 
     //是否搜索
-    public MutableLiveData<Boolean> search =new MutableLiveData();
+    public MutableLiveData<Boolean> search =new MutableLiveData<Boolean>();
+
 
     //蓝牙列表
     public ObservableArrayList<BleDevice> bleDevices = new ObservableArrayList<>();
+
+    //设置蓝牙列表是否可见
+    public ObservableInt deviceListVisible =new ObservableInt();
+
 
     //public MutableLiveData<Boolean> search = new MutableLiveData<>();
 

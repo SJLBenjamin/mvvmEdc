@@ -12,9 +12,11 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 
 import com.endoc.mvvmedc.R;
@@ -24,6 +26,7 @@ import com.endoc.mvvmedc.bridge.state.FragmentMonitorViewModel;
 
 import com.endoc.mvvmedc.databinding.FragmentMonitorBinding;
 
+import com.endoc.mvvmedc.databinding.ListviewDeviceItemBinding;
 import com.endoc.mvvmedc.ui.adapter.DeviceListAdapter;
 import com.orhanobut.logger.Logger;
 
@@ -93,7 +96,6 @@ public class MonitorFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         initTitleView(View.GONE,View.GONE,View.GONE,View.GONE,"");
-
         // Inflate the layout for this fragment
         View inflate = inflater.inflate(R.layout.fragment_monitor, container, false);
         mFragmentMonitorBinding = DataBindingUtil.bind(inflate);
@@ -103,13 +105,25 @@ public class MonitorFragment extends BaseFragment {
 
     //此方法在onCreateView执行完马上执行
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         //mBleRequestViewModel.getDeviceMutableLiveData().getValue(),此处未初始化,所以一直为null,导致List拿不到数据
         value = mBleRequestViewModel.getDeviceMutableLiveData().getValue();
         mFragmentMonitorBinding.rcDeviceList.setLayoutManager(new LinearLayoutManager(mActivity));
-        mDeviceListAdapter = new DeviceListAdapter(value);
+        //此处必须传入TextView.onclickListener,否则设置给控件回调的listener就是其他view的,导致转换失败
+        mDeviceListAdapter = new DeviceListAdapter(value) {
+            @Override
+            public void bindItem(ListviewDeviceItemBinding listviewDeviceItemBinding, final DeviceListAdapter.DeviceHolder holder, final int position) {
+                listviewDeviceItemBinding.tvDeviceName.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        //执行连接操作
+                        mBleRequestViewModel.connectDevice(value.get(position));
+                    }
+                });
+            }
+        };
         mFragmentMonitorBinding.rcDeviceList.setAdapter(mDeviceListAdapter);
         //设置搜索按钮观察者
         mFragmentMonitorViewModel.search.observe(mActivity, new Observer<Boolean>() {
@@ -117,8 +131,12 @@ public class MonitorFragment extends BaseFragment {
             public void onChanged(Boolean aBoolean) {
                 Logger.d("搜索按钮  Boolean==="+aBoolean);
                 if(aBoolean){
+                    //无法在BindingAdapter更新,具体不明
+                    mFragmentMonitorBinding.tvSearchStatus.setText(R.string.stop_search);
                     startSearch();//开始搜索
                 }else {
+                    //无法在BindingAdapter更新,具体不明
+                    mFragmentMonitorBinding.tvSearchStatus.setText(R.string.start_search);
                     mBleRequestViewModel.requestStopScan();//停止搜索
                 }
             }
@@ -133,6 +151,21 @@ public class MonitorFragment extends BaseFragment {
             }
         });
 
+        //设置连接状态变化
+        mBleRequestViewModel.getConnectDeviceMutableLiveData().observe(mActivity, new Observer<BleDevice>() {
+            @Override
+            public void onChanged(BleDevice bleDevice) {
+                //设置连接状态
+                mFragmentMonitorViewModel.connectState.set(bleDevice.isConnected());
+                if(bleDevice.isConnected()){//连接
+                    mFragmentMonitorViewModel.connectDeviceName.set(bleDevice.getBleName());
+                    mFragmentMonitorViewModel.deviceListVisible.set(View.INVISIBLE);
+                }else if(bleDevice.isDisconnected()){//断开
+                    //搜索界面不可见
+                    mFragmentMonitorViewModel.deviceListVisible.set(View.VISIBLE);
+                }
+            }
+        });
         //还需要绑定点击事件
         mFragmentMonitorBinding.setClick(new Click());
     }
@@ -169,7 +202,7 @@ public class MonitorFragment extends BaseFragment {
 
     public void startSearch(){
         if (EasyPermissions.hasPermissions(mActivity, BLE)) {
-            //清除列表数据
+            //清除列表数据,同步线程不需要set,直接修改值也会生效,而异步线程必须post
            mBleRequestViewModel.getDeviceMutableLiveData().getValue().clear();
             //开始搜索
             mBleRequestViewModel.requestStartScan();
@@ -182,12 +215,9 @@ public class MonitorFragment extends BaseFragment {
     }
 
 
-
-
     private static final String[] BLE ={Manifest.permission.BLUETOOTH_ADMIN,Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.ACCESS_COARSE_LOCATION};
     private static final int RC_LOCATION_GPS_PREM =124;
-
 
 
     //https://blog.csdn.net/yang_study_first/article/details/101023919?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.channel_param&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.channel_param

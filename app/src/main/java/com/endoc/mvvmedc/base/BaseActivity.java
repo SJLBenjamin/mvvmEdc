@@ -34,7 +34,6 @@ public  class BaseActivity extends AppCompatActivity implements EasyPermissions.
         BarUtils.setStatusBarLightMode(this, true);
         shareViewModel = getAppViewModelProvider().get(ShareViewModel.class);
         //shareViewModel = getAppViewModelProviderTo().get(shareViewModel.class);
-
         //Logger.d("BaseActivity==="+shareViewModel);
         //Logger.d("BaseActivity getAppViewModelProvider==="+getAppViewModelProvider());//不一样
     }

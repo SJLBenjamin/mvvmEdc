@@ -40,7 +40,8 @@
                 android:id="@+id/tv_connectStatus"
                 style="@style/wrapStyle"
                 android:layout_marginLeft="@dimen/margin13"
-                android:text="@{vm.connectDeviceName,default=`test`}"
+                app:connectStatus="@{vm.connectState}"
+                app:deviceName="@{vm.connectDeviceName}"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text12"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -151,12 +152,14 @@
                 android:textSize="@dimen/text13" />
 
             <androidx.recyclerview.widget.RecyclerView
+                android:visibility="@{vm.deviceListVisible}"
                 android:id="@+id/rc_device_list"
                 app:layout_constraintTop_toBottomOf="@id/iv_date_detail"
                 app:layout_constraintBottom_toTopOf="@id/tv_notify_ble"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"/>
             <TextView
+                android:visibility="@{vm.deviceListVisible}"
                 android:id="@+id/tv_notify_ble"
                 app:layout_constraintBottom_toTopOf="@id/tv_search_status"
                 android:layout_width="match_parent"
@@ -167,7 +170,9 @@
                 android:textColor="@color/myGray"
                 android:textSize="@dimen/text13" />
 
-            <Button
+            <!--app:searchStatus="@{vm.search}"-->
+            <TextView
+                android:visibility="@{vm.deviceListVisible}"
                 android:onClick="@{()->click.search()}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:id="@+id/tv_search_status"
@@ -178,9 +183,7 @@
                 android:layout_marginBottom="@dimen/margin25"
                 android:background="@drawable/shape_rectangle_device_control_start_background"
                 android:gravity="center"
-                android:text="@{vm.search==true?@string/stop_search:@string/start_search}"
                 android:textColor="@color/colorRecodeText" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
