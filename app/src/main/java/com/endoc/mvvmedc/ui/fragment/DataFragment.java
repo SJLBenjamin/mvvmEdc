@@ -62,7 +62,7 @@ public class DataFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        initTitleView(View.INVISIBLE,View.VISIBLE,View.VISIBLE,View.INVISIBLE,getString(R.string.data));
+        initTitleView(View.INVISIBLE,View.VISIBLE,View.VISIBLE,View.INVISIBLE,getString(R.string.data),"");
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_data, container, false);
     }

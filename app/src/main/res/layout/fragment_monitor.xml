@@ -85,6 +85,7 @@
                 app:layout_constraintTop_toTopOf="@id/iv_user_head" />
 
             <ImageView
+                android:onClick="@{()->click.caseList()}"
                 android:id="@+id/iv_user_list"
                 style="@style/wrapStyle"
                 android:layout_marginTop="@dimen/margin19"

@@ -1,7 +1,10 @@
 package com.endoc.mvvmedc.share;
 
+import androidx.databinding.ObservableBoolean;
 import androidx.databinding.ObservableField;
 import androidx.databinding.ObservableInt;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 /**
@@ -14,5 +17,7 @@ public class ShareViewModel extends ViewModel {
     public ObservableInt isSave = new ObservableInt();//保存按钮
     public ObservableInt isImgMessage = new ObservableInt();//消息图片
     public ObservableField<String> titleShow = new ObservableField<String>();//显示的内容
-
+    public ObservableField<String> rightTitleShow = new ObservableField<String>();//显示的内容
+    public MutableLiveData<Boolean>  RightClick = new MutableLiveData<Boolean>();//右边显示建
+    public MutableLiveData<Boolean>  back = new MutableLiveData<Boolean>();//左边返回键
 }

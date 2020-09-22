@@ -6,6 +6,7 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentController;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -14,6 +15,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.endoc.mvvmedc.R;
 import com.endoc.mvvmedc.base.BaseActivity;
+import com.endoc.mvvmedc.base.BaseFragment;
 import com.endoc.mvvmedc.databinding.ActivityMainBinding;
 import com.endoc.mvvmedc.share.MainActivityViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -32,6 +34,7 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         mActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         mActivityMainBinding.setVm(shareViewModel);//设置绑定
+        mActivityMainBinding.setClick(new ClickProxy());
         initNavigationView();
 //        Logger.d(shareViewModel);
     }
@@ -55,12 +58,32 @@ public class MainActivity extends BaseActivity {
         //NavigationUI.setupActionBarWithNavController(this, navController,appBarConfiguration);
         //将hostFragment和bottomNavigation绑定,这样的方法绑定后fragment不会常驻内存
         NavigationUI.setupWithNavController(mBottomNavigationView, navController);
-
         //设置点击事件
 
     }
 
+    public class  ClickProxy{
+        //取消按钮
+        public void back(){
+            Logger.d("BACK");
+        }
 
+        //右边文件
+        public void right(){
+
+            //如果是新增病例界面
+            if(shareViewModel.rightTitleShow.get().equals(getString(R.string.add_cases))){
+
+                Logger.d("新增病例界面被点击了==="+getSupportFragmentManager().findFragmentById(R.id.caseListFragment));
+
+
+
+                ((BaseFragment)getSupportFragmentManager().findFragmentById(R.id.caseListFragment)).right();
+            }
+            //getSupportFragmentManager().findFragmentById(R.id.)
+        }
+
+    }
 
 
 }

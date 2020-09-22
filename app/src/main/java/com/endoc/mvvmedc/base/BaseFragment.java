@@ -75,12 +75,13 @@ public  class BaseFragment extends Fragment  implements EasyPermissions.Permissi
      *     public ObservableInt isMessage = new ObservableInt();//消息图片
      *     public ObservableField<String>  titleShow = new ObservableField<String>();//显示的内容
      */
-    public  void initTitleView(int back,int constraintLayoutStatus,int isImgMessage,int save,String titleShow){
+    public  void initTitleView(int back,int constraintLayoutStatus,int isImgMessage,int save,String titleShow,String rightShow){
         shareViewModel.isBack.set(back);
         shareViewModel.isConstraintLayoutStatus.set(constraintLayoutStatus);
         shareViewModel.isImgMessage.set(isImgMessage);
         shareViewModel.isSave.set(save);
         shareViewModel.titleShow.set(titleShow);
+        shareViewModel.rightTitleShow.set(rightShow);
     }
 
 
@@ -97,4 +98,10 @@ public  class BaseFragment extends Fragment  implements EasyPermissions.Permissi
     public void onPermissionsDenied(int requestCode, @NonNull List<String> perms) {
 
     }
+
+    //返回
+    public  void back(){};
+
+    //右边按钮
+    public  void right(){};
 }

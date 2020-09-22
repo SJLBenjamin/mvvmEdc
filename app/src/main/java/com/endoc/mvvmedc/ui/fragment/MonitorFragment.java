@@ -6,24 +6,25 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
-import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+
 
 
 import com.endoc.mvvmedc.R;
 import com.endoc.mvvmedc.base.BaseFragment;
+import com.endoc.mvvmedc.bridge.database.BloodSugarViewModel;
 import com.endoc.mvvmedc.bridge.request.BleRequestViewModel;
 import com.endoc.mvvmedc.bridge.state.FragmentMonitorViewModel;
 
+
+import com.endoc.mvvmedc.data.room.entity.User;
 import com.endoc.mvvmedc.databinding.FragmentMonitorBinding;
 
 import com.endoc.mvvmedc.databinding.ListviewDeviceItemBinding;
@@ -34,7 +35,7 @@ import java.util.List;
 
 import cn.com.heaton.blelibrary.ble.model.BleDevice;
 import pub.devrel.easypermissions.EasyPermissions;
-import pub.devrel.easypermissions.PermissionRequest;
+
 
 
 /**
@@ -56,6 +57,7 @@ public class MonitorFragment extends BaseFragment {
     private BleRequestViewModel mBleRequestViewModel;
     private DeviceListAdapter mDeviceListAdapter;
     private List<BleDevice> value;
+    private BloodSugarViewModel mBloodSugarViewModel;
 
 
     public MonitorFragment() {
@@ -90,12 +92,15 @@ public class MonitorFragment extends BaseFragment {
         mFragmentMonitorViewModel = getAppViewModelProvider().get(FragmentMonitorViewModel.class);
         //蓝牙列表相关viewm
         mBleRequestViewModel = getAppViewModelProvider().get(BleRequestViewModel.class);
+        mBloodSugarViewModel = getAppViewModelProvider().get(BloodSugarViewModel.class);
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        initTitleView(View.GONE,View.GONE,View.GONE,View.GONE,"");
+        initTitleView(View.GONE,View.GONE,View.GONE,View.GONE,"","");
         // Inflate the layout for this fragment
         View inflate = inflater.inflate(R.layout.fragment_monitor, container, false);
         mFragmentMonitorBinding = DataBindingUtil.bind(inflate);
@@ -124,6 +129,7 @@ public class MonitorFragment extends BaseFragment {
                 });
             }
         };
+
         mFragmentMonitorBinding.rcDeviceList.setAdapter(mDeviceListAdapter);
         //设置搜索按钮观察者
         mFragmentMonitorViewModel.search.observe(mActivity, new Observer<Boolean>() {
@@ -166,6 +172,15 @@ public class MonitorFragment extends BaseFragment {
                 }
             }
         });
+
+        //数据库的观察者
+        mBloodSugarViewModel.getUserListLiveData().observe(mActivity, new Observer<List<User>>() {
+            @Override
+            public void onChanged(List<User> users) {
+             //本地存一份,然後把字符串轉換為liveData對象
+
+            }
+        });
         //还需要绑定点击事件
         mFragmentMonitorBinding.setClick(new Click());
     }
@@ -188,6 +203,11 @@ public class MonitorFragment extends BaseFragment {
         //点击了设备控制
         public void connectDevice() {
 
+        }
+
+        //设备列表界面
+        public void caseList(){
+            getNavController().navigate(R.id.caseListFragment);
         }
 
         //点击了搜索

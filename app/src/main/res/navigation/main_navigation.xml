@@ -19,7 +19,11 @@
         android:id="@+id/monitorFragment"
         android:name="com.endoc.mvvmedc.ui.fragment.MonitorFragment"
         android:label="fragment_monitor"
-        tools:layout="@layout/fragment_monitor" />
+        tools:layout="@layout/fragment_monitor" >
+        <action
+            android:id="@+id/action_monitorFragment_to_caseListFragment"
+            app:destination="@id/caseListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/dataFragment"
         android:name="com.endoc.mvvmedc.ui.fragment.DataFragment"
@@ -30,6 +34,11 @@
         android:name="com.endoc.mvvmedc.ui.fragment.MyFragment"
         android:label="fragment_my"
         tools:layout="@layout/fragment_my" />
+    <fragment
+        android:id="@+id/caseListFragment"
+        android:name="com.endoc.mvvmedc.ui.fragment.monitor.CaseListFragment"
+        android:label="fragment_case_list"
+        tools:layout="@layout/fragment_case_list" />
 
 
 </navigation>
