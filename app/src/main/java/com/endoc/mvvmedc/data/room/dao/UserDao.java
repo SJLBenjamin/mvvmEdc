@@ -14,18 +14,23 @@ import java.util.List;
 @Dao
 public interface UserDao {
     @Insert
-    void insert(User user);
+   public long insert(User user);
 
     @Delete
-    void delete(User user);
+    public void delete(User user);
 
     @Update
-    void update(User user);
+    public void update(User user);
 
     @Query("SELECT * FROM user")
-    LiveData<List<User>>  getUserList();
+   public LiveData<List<User>>  getUserList();
+
 
     @Query("SELECT * FROM user WHERE id=:id")
-    User getUserById(int id);
+    public User getUserById(String id);
+
+    //执行语句的操作用query执行
+    @Query("DELETE  FROM user")
+    public int deleteAll();
 
 }

@@ -18,6 +18,7 @@ public class ShareViewModel extends ViewModel {
     public ObservableInt isImgMessage = new ObservableInt();//消息图片
     public ObservableField<String> titleShow = new ObservableField<String>();//显示的内容
     public ObservableField<String> rightTitleShow = new ObservableField<String>();//显示的内容
-    public MutableLiveData<Boolean>  RightClick = new MutableLiveData<Boolean>();//右边显示建
-    public MutableLiveData<Boolean>  back = new MutableLiveData<Boolean>();//左边返回键
+    public MutableLiveData<Boolean>  RightClick = new MutableLiveData<Boolean>();//右边显示建是否点击
+    public MutableLiveData<Boolean>  backClick = new MutableLiveData<Boolean>();//左边返回键是否点击
+    public ObservableInt isBottomShow =new ObservableInt();//底部栏是否可见
 }

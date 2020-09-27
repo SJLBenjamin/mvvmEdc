@@ -5,6 +5,9 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -71,7 +74,13 @@ public class CaseListFragment extends BaseFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        initTitleView(View.VISIBLE,View.VISIBLE,View.INVISIBLE,View.VISIBLE,getString(R.string.cases),getString(R.string.add_cases));
+        initTitleView(View.VISIBLE,View.VISIBLE,View.INVISIBLE,View.VISIBLE,getString(R.string.cases),getString(R.string.add_cases),View.GONE);
+        view.findViewById(R.id.bt_dump).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(v).navigate(R.id.action_caseListFragment_to_addCaseFragment);
+            }
+        });
     }
 
     @Override
@@ -79,4 +88,31 @@ public class CaseListFragment extends BaseFragment {
         super.right();
         Logger.d("CaseListFragment");
     }
+
+    @Override
+    public void backChanged(Boolean s) {
+        super.backChanged(s);
+        Logger.d("caseListFragment backClick");
+    }
+
+    @Override
+    public <T> void rightChanged(T s) {
+        super.rightChanged(s);
+        if(s.equals(mActivity.getString(R.string.add_cases))){
+            Logger.d("CaseListFragment rightChanged");
+           getNavController().navigate(R.id.action_caseListFragment_to_addCaseFragment);
+        }
+    }
+
+    //    /**
+//     * @param s 此方法会被调用,是因为实例化对象不是BaseFragment
+//     */
+//    @Override
+//    public void rightChanged(String s) {
+//        if(s.equals(getString(R.string.add_cases))){
+//            Logger.d("CaseListFragment rightChanged");
+//            getNavController().navigate(R.id.addCaseFragment);
+//        }
+//
+//    }
 }

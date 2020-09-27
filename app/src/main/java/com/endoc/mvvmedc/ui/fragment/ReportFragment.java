@@ -62,7 +62,7 @@ public class ReportFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        initTitleView(View.INVISIBLE,View.VISIBLE,View.INVISIBLE,View.INVISIBLE,getString(R.string.report),"");
+        initTitleView(View.INVISIBLE,View.VISIBLE,View.INVISIBLE,View.INVISIBLE,getString(R.string.report),"",View.VISIBLE);
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_report, container, false);
     }

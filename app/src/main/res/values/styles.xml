@@ -14,4 +14,48 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
+    <!--添加病例界面相对布局选项-->
+    <style name="AddCasesRelative">
+        <item name="android:background">@drawable/background_down</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginLeft">13dp</item>
+        <item name="android:layout_marginRight">13dp</item>
+    </style>
+
+
+    <!--添加病例界面文字选项-->
+    <style name="AddCasesText">
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginLeft">13dp</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/colorRecodeText</item>
+    </style>
+
+    <!--添加病例界面显示文字选项-->
+    <style name="AddCasesShowText">
+        <item name="android:textColor">#ff323232</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_marginRight">13dp</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <!--添加病例界面EditView选项-->
+    <style name="AddCasesEditView">
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:hint">@string/please_input</item>
+        <item name="android:background">@android:color/white</item>
+        <item name="android:gravity">right</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+    </style>
 </resources>

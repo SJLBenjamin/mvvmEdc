@@ -12,7 +12,7 @@ import com.orhanobut.logger.Logger;
 public class MonitorBleBindingAdapter {
 
 
-  /*此方法用来更新搜索的ui,不知道为什么只有第一次调用
+
   @BindingAdapter(value = {"searchStatus"},requireAll = true)
     public static void showSearchText(TextView textView,boolean searchStatus){
         Logger.d("搜索状态改变");
@@ -21,7 +21,7 @@ public class MonitorBleBindingAdapter {
         }else {
             textView.setText(textView.getContext().getText(R.string.start_search));
         }
-    }*/
+    }
 
 
     @BindingAdapter(value = {"connectStatus","deviceName"},requireAll = false)

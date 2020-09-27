@@ -34,11 +34,28 @@
         android:name="com.endoc.mvvmedc.ui.fragment.MyFragment"
         android:label="fragment_my"
         tools:layout="@layout/fragment_my" />
+    <!-- app:popUpToInclusive="true" 弹出栈中第一个目的地的实例对象-->
     <fragment
         android:id="@+id/caseListFragment"
         android:name="com.endoc.mvvmedc.ui.fragment.monitor.CaseListFragment"
         android:label="fragment_case_list"
-        tools:layout="@layout/fragment_case_list" />
-
+        tools:layout="@layout/fragment_case_list" >
+       <!-- app:popUpTo="@+id/addCaseFragment"
+        app:popUpToInclusive="true"-->
+        <action
+            android:id="@+id/action_caseListFragment_to_addCaseFragment"
+            app:destination="@id/addCaseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addCaseFragment"
+        android:name="com.endoc.mvvmedc.ui.fragment.monitor.AddCaseFragment"
+        android:label="fragment_add_case"
+        tools:layout="@layout/fragment_add_case" >
+        <!--            app:popUpTo="@+id/caseListFragment"-->
+        <!--            app:popUpToInclusive="true"-->
+        <action
+            android:id="@+id/action_addCaseFragment_to_caseListFragment"
+            app:destination="@id/caseListFragment" />
+    </fragment>
 
 </navigation>

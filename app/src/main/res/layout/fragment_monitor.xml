@@ -173,6 +173,7 @@
 
             <!--app:searchStatus="@{vm.search}"-->
             <TextView
+                app:searchStatus="@{vm.search}"
                 android:visibility="@{vm.deviceListVisible}"
                 android:onClick="@{()->click.search()}"
                 app:layout_constraintBottom_toBottomOf="parent"

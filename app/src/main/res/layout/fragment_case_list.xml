@@ -5,5 +5,9 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragment.monitor.CaseListFragment">
 
-
+<Button
+    android:text="跳转测试"
+    android:id="@+id/bt_dump"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"/>
 </FrameLayout>

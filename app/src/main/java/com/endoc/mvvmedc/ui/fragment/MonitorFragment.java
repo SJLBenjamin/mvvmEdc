@@ -31,6 +31,8 @@ import com.endoc.mvvmedc.databinding.ListviewDeviceItemBinding;
 import com.endoc.mvvmedc.ui.adapter.DeviceListAdapter;
 import com.orhanobut.logger.Logger;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import cn.com.heaton.blelibrary.ble.model.BleDevice;
@@ -100,15 +102,18 @@ public class MonitorFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        initTitleView(View.GONE,View.GONE,View.GONE,View.GONE,"","");
+        initTitleView(View.GONE,View.GONE,View.GONE,View.GONE,"","",View.VISIBLE);
         // Inflate the layout for this fragment
         View inflate = inflater.inflate(R.layout.fragment_monitor, container, false);
         mFragmentMonitorBinding = DataBindingUtil.bind(inflate);
         mFragmentMonitorBinding.setVm(mFragmentMonitorViewModel);
+        //绑定生命周期,不绑定liveData变化,xml中无法感应到
+        mFragmentMonitorBinding.setLifecycleOwner(this);
         return inflate;
     }
 
     //此方法在onCreateView执行完马上执行
+    final List<Date> mDate = new ArrayList<Date>();
     @Override
     public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -116,7 +121,6 @@ public class MonitorFragment extends BaseFragment {
         //mBleRequestViewModel.getDeviceMutableLiveData().getValue(),此处未初始化,所以一直为null,导致List拿不到数据
         value = mBleRequestViewModel.getDeviceMutableLiveData().getValue();
         mFragmentMonitorBinding.rcDeviceList.setLayoutManager(new LinearLayoutManager(mActivity));
-        //此处必须传入TextView.onclickListener,否则设置给控件回调的listener就是其他view的,导致转换失败
         mDeviceListAdapter = new DeviceListAdapter(value) {
             @Override
             public void bindItem(ListviewDeviceItemBinding listviewDeviceItemBinding, final DeviceListAdapter.DeviceHolder holder, final int position) {
@@ -135,23 +139,20 @@ public class MonitorFragment extends BaseFragment {
         mFragmentMonitorViewModel.search.observe(mActivity, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
-                Logger.d("搜索按钮  Boolean==="+aBoolean);
                 if(aBoolean){
-                    //无法在BindingAdapter更新,具体不明
-                    mFragmentMonitorBinding.tvSearchStatus.setText(R.string.stop_search);
                     startSearch();//开始搜索
                 }else {
-                    //无法在BindingAdapter更新,具体不明
-                    mFragmentMonitorBinding.tvSearchStatus.setText(R.string.start_search);
                     mBleRequestViewModel.requestStopScan();//停止搜索
                 }
             }
         });
 
+
         //设置蓝牙列表观察
         mBleRequestViewModel.getDeviceMutableLiveData().observe(mActivity, new Observer<List<BleDevice>>() {
             @Override
             public void onChanged(List<BleDevice> bleDevices) {
+                Logger.d("livedate"+new Date().getTime());
                 Logger.d("蓝牙列表数据更新  length==="+value.size());
                 mDeviceListAdapter.notifyDataSetChanged();
             }
@@ -174,13 +175,13 @@ public class MonitorFragment extends BaseFragment {
         });
 
         //数据库的观察者
-        mBloodSugarViewModel.getUserListLiveData().observe(mActivity, new Observer<List<User>>() {
+     /*   mBloodSugarViewModel.getUserListLiveData().observe(mActivity, new Observer<List<User>>() {
             @Override
             public void onChanged(List<User> users) {
              //本地存一份,然後把字符串轉換為liveData對象
 
             }
-        });
+        });*/
         //还需要绑定点击事件
         mFragmentMonitorBinding.setClick(new Click());
     }
@@ -233,6 +234,7 @@ public class MonitorFragment extends BaseFragment {
                     BLE);
         }
     }
+
 
 
     private static final String[] BLE ={Manifest.permission.BLUETOOTH_ADMIN,Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE,

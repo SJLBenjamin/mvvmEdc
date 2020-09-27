@@ -13,4 +13,4 @@ public class CommonBindingAdapter {
 public static  void showMolJianTou(ImageView view,int molImage){
             view.setImageDrawable(view.getContext().getResources().getDrawable(molImage));
         }
-        }
+}

@@ -1,33 +1,28 @@
 package com.endoc.mvvmedc.ui;
 import android.os.Bundle;
-import android.view.MenuItem;
+
 import android.view.View;
 
-import androidx.annotation.NonNull;
+
 import androidx.databinding.DataBindingUtil;
-import androidx.databinding.ViewDataBinding;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentController;
+
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
+
 import androidx.navigation.ui.NavigationUI;
 
 import com.endoc.mvvmedc.R;
 import com.endoc.mvvmedc.base.BaseActivity;
-import com.endoc.mvvmedc.base.BaseFragment;
-import com.endoc.mvvmedc.databinding.ActivityMainBinding;
-import com.endoc.mvvmedc.share.MainActivityViewModel;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.orhanobut.logger.Logger;
 
-import java.util.List;
+import com.endoc.mvvmedc.databinding.ActivityMainBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+
 
 public class MainActivity extends BaseActivity {
 
     private BottomNavigationView mBottomNavigationView;
     private ActivityMainBinding mActivityMainBinding;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +33,6 @@ public class MainActivity extends BaseActivity {
         initNavigationView();
 //        Logger.d(shareViewModel);
     }
-
-
 
 
     private void initNavigationView() {
@@ -65,25 +58,20 @@ public class MainActivity extends BaseActivity {
     public class  ClickProxy{
         //取消按钮
         public void back(){
-            Logger.d("BACK");
+            //设置返回键被点击了
+            if(shareViewModel.isBack.get()==View.VISIBLE){//如果返回键可见
+                shareViewModel.backClick.setValue(true);
+            }
         }
 
         //右边文件
         public void right(){
-
-            //如果是新增病例界面
-            if(shareViewModel.rightTitleShow.get().equals(getString(R.string.add_cases))){
-
-                Logger.d("新增病例界面被点击了==="+getSupportFragmentManager().findFragmentById(R.id.caseListFragment));
-
-
-
-                ((BaseFragment)getSupportFragmentManager().findFragmentById(R.id.caseListFragment)).right();
+            //如果右上角可见
+            if(shareViewModel.isSave.get()==View.VISIBLE){
+                //那么重新设置修改右上角的
+                shareViewModel.RightClick.setValue(true);
             }
-            //getSupportFragmentManager().findFragmentById(R.id.)
         }
-
     }
-
 
 }

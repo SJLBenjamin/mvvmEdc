@@ -90,6 +90,7 @@
       app:itemTextColor=设置颜色选择器
       -->
       <com.google.android.material.bottomnavigation.BottomNavigationView
+          android:visibility="@{vm.isBottomShow}"
           android:id="@+id/bnv_main"
           app:menu="@menu/navigation_main_bottom"
           app:itemTextColor="@color/bottom_rediobutton_text_select"
@@ -99,16 +100,16 @@
           android:layout_height="wrap_content" />
 
       <fragment
-          app:layout_constraintBottom_toTopOf="@id/bnv_main"
           android:id="@+id/fragment"
           android:name="androidx.navigation.fragment.NavHostFragment"
-          app:layout_constraintTop_toBottomOf="@id/cl_title"
           android:layout_width="match_parent"
           android:layout_height="0dp"
           app:defaultNavHost="true"
+          app:layout_constraintBottom_toTopOf="@id/bnv_main"
+          app:layout_constraintTop_toBottomOf="@id/cl_title"
+          app:layout_constraintVertical_bias="1.0"
           app:navGraph="@navigation/main_navigation"
-          tools:layout_editor_absoluteX="1dp"
-          tools:layout_editor_absoluteY="1dp" />
+          tools:layout_editor_absoluteX="178dp" />
 
    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

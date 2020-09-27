@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.endoc.mvvmedc.bridge.state.AddCaseFragmentViewModel" />
+        <variable
+            name="click"
+            type="com.endoc.mvvmedc.ui.fragment.monitor.AddCaseFragment.ProxyClick" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.fragment.monitor.AddCaseFragment">
+
+        <LinearLayout
+
+            style="@style/AddCasesRelative">
+
+            <!--                <ImageView style="@style/AddCasesLeftImage" />-->
+
+            <TextView
+                style="@style/AddCasesText"
+                android:drawableRight="@drawable/choose_the_icon"
+                android:text="@string/name" />
+
+
+
+            <EditText
+                android:text="@={vm.userObservableField.name}"
+                android:layout_width="match_parent"
+                android:id="@+id/et_name"
+                style="@style/AddCasesEditView"
+                android:layout_marginRight="13dp"
+                android:gravity="right|center_vertical" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:id="@+id/rl_id_number"
+            style="@style/AddCasesRelative">
+
+            <!--                <ImageView-->
+            <!--                    android:layout_gravity="center_vertical"-->
+            <!--                    style="@style/AddCasesLeftImage" />-->
+
+            <TextView
+                style="@style/AddCasesText"
+                android:drawableRight="@drawable/choose_the_icon"
+                android:text="@string/id_number" />
+
+            <EditText
+                android:text="@={vm.userObservableField.id}"
+                android:layout_marginRight="13dp"
+                android:id="@+id/et_id_number"
+                style="@style/AddCasesEditView"
+                android:layout_width="match_parent"
+                android:maxLines="1" />
+
+            <!--                <TextView-->
+            <!--                    android:id="@+id/tv_id_number"-->
+            <!--                    style="@style/AddCasesShowText" />-->
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_sex"
+            style="@style/AddCasesRelative">
+
+            <!--                <ImageView style="@style/AddCasesLeftImage" />-->
+            <TextView
+                style="@style/AddCasesText"
+                android:drawableRight="@drawable/choose_the_icon"
+                android:text="@string/sex" />
+
+            <TextView
+                android:text="@{vm.userObservableField.sex}"
+                android:onClick="@{()->click.sexSelect()}"
+                android:drawablePadding="10dp"
+                android:drawableRight="@drawable/jump"
+                android:id="@+id/tv_sex"
+                style="@style/AddCasesShowText" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_birthday"
+            style="@style/AddCasesRelative">
+
+            <!--                <ImageView style="@style/AddCasesLeftImage" />-->
+
+            <TextView
+                style="@style/AddCasesText"
+                android:drawableRight="@drawable/choose_the_icon"
+                android:text="@string/birthday" />
+
+            <TextView
+                android:text="@{vm.userObservableField.birthDay+``}"
+                android:onClick="@{()->click.birthdaySelect()}"
+                android:drawablePadding="10dp"
+                android:drawableRight="@drawable/jump"
+                style="@style/AddCasesShowText" />
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_phone"
+            style="@style/AddCasesRelative">
+
+            <TextView
+                style="@style/AddCasesText"
+                android:text="@string/phone" />
+
+            <EditText
+                android:text="@={vm.userObservableField.telephone}"
+                android:layout_marginRight="13dp"
+                android:id="@+id/et_telephone"
+                style="@style/AddCasesEditView"
+                android:inputType="phone" />
+
+            <TextView
+                android:layout_marginRight="13dp"
+                android:id="@+id/tv_telephone"
+                style="@style/AddCasesShowText" />
+        </RelativeLayout>
+
+
+    </LinearLayout>
+</layout>

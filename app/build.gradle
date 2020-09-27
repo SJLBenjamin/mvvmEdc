@@ -82,4 +82,7 @@ dependencies {
 
     // optional - Test helpers
     testImplementation "androidx.room:room-testing:$room_version"
+
+    //滑动条
+    implementation 'com.contrarywind:Android-PickerView:4.1.8'
 }

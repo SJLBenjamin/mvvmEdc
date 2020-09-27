@@ -50,8 +50,6 @@ public abstract class DeviceListAdapter extends RecyclerView.Adapter<DeviceListA
 
    public class DeviceHolder extends RecyclerView.ViewHolder{
 
-
-
         public DeviceHolder(@NonNull View itemView) {
             super(itemView);
              //listviewDeviceItemBinding= DataBindingUtil.bind(itemView);
@@ -66,7 +64,5 @@ public abstract class DeviceListAdapter extends RecyclerView.Adapter<DeviceListA
             //listviewDeviceItemBinding.tvDeviceName.setOnClickListener(mOnClickListener);
         }
 
-
     }
-
 }

@@ -152,6 +152,7 @@
     <string name="device_stop_status">设备已停止</string>
     <string name="device_pause_status">设备已暂停</string>
     <string name="add">新增</string>
+    <string name="back">返回</string>
 
     <string name="monitor_blood_glucose_level_dynamically">动态监测血糖仪</string>
     <string name="save">保存</string>
