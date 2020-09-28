@@ -52,35 +52,7 @@ Context mContext;
 
         public void bind(int position){
             RecycleAddCasesItemBinding recycleAddCasesItemBinding = DataBindingUtil.getBinding(this.itemView);
-            switch (position){
-                case 0:
-                    recycleAddCasesItemBinding.etInput.setVisibility(View.VISIBLE);
-                    recycleAddCasesItemBinding.tvContent.setText(mContext.getString(R.string.name));
-                    recycleAddCasesItemBinding.ivDump.setVisibility(View.GONE);
-                    break;
-                case 1:
-                    recycleAddCasesItemBinding.etInput.setVisibility(View.VISIBLE);
-                    recycleAddCasesItemBinding.tvContent.setText(mContext.getString(R.string.sex));
-                    recycleAddCasesItemBinding.ivDump.setVisibility(View.GONE);
-                    break;
-                case 2:
-                    recycleAddCasesItemBinding.etInput.setVisibility(View.VISIBLE);
-                    recycleAddCasesItemBinding.tvContent.setText(mContext.getString(R.string.birthday));
-                    recycleAddCasesItemBinding.ivDump.setVisibility(View.GONE);
-                    break;
-                case 3:
-                    recycleAddCasesItemBinding.etInput.setVisibility(View.VISIBLE);
-                    recycleAddCasesItemBinding.tvContent.setText(mContext.getString(R.string.phone));
-                    recycleAddCasesItemBinding.ivDump.setVisibility(View.GONE);
-                    break;
-                case 4:
-                    recycleAddCasesItemBinding.etInput.setVisibility(View.VISIBLE);
-                    recycleAddCasesItemBinding.tvContent.setText(mContext.getString(R.string.id_number));
-                    recycleAddCasesItemBinding.ivDump.setVisibility(View.GONE);
-                    break;
-                default:
-                    break;
-            }
+
         }
 
     }

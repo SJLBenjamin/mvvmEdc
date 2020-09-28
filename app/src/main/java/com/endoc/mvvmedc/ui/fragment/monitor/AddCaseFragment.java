@@ -109,13 +109,13 @@ public class AddCaseFragment extends BaseFragment {
         recyclerView.setAdapter(new UserImforAdapter(mActivity));
         recyclerView.addItemDecoration(new DividerItemDecoration(mActivity, DividerItemDecoration.VERTICAL));*/
 
+
         mAddCaseFragmentViewModel.getUsers(mActivity).observe(mActivity, new Observer<List<User>>() {
             @Override
-            public void onChanged(List<User> users) {
-                Logger.d("size==="+mAddCaseFragmentViewModel.getUsers(mActivity).getValue());
+            public void onChanged(final List<User> users) {
+                        Logger.d("更改后的===="+users.size());
             }
         });
-
 
     }
 
@@ -131,7 +131,6 @@ public class AddCaseFragment extends BaseFragment {
                     mUser.id=mUser.telephone;
                    Logger.d("long===="+ mAddCaseFragmentViewModel.saveUser(mActivity,mUser));
                     //Logger.d("删除的行数==="+mAddCaseFragmentViewModel.deleteUserAll(mActivity));
-
                 }
             }).start();
 
